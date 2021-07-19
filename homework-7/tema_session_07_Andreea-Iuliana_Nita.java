@@ -5,25 +5,31 @@ public class MyProgram {
         int b = Integer.parseInt(args[1]);
         String operator = args[2];
 
-        System.out.print(operationResult(operator, a,b));
+        System.out.print(operationResult(a, b, operator));
     }
 
-    private static String operationResult(String inputOperator, int a, int b){
+    private static String operationResult(int a, int b, String operator){
 
-        double result=0;
-
-        switch (inputOperator) {
-            case "-": result = a - b;
-                break;
-            case "+": result = a + b;
-                break;
-            case "*": result = a * b;
-                break;
-            case "/": result = (float) a / (float) b;
-            default : System.out.println("Nu este un operator");
+        if (operator.equals("+") ||  operator.equals("-") || operator.equals("*") || operator.equals("/")) {
+            double result=0;
+            switch (operator) {
+                case "-":
+                    result = a - b;
+                    break;
+                case "+":
+                    result = a + b;
+                    break;
+                case "*":
+                    result = a * b;
+                    break;
+                case "/":
+                    result = (double) a / (double) b;
+            }
+            return ("Rezultat: " + result);
+        } else {
+            return "Introduceti operator (+, -, *, /)";
         }
 
-        return ("Rezultatul operatiei matematice este: " + result);
     }
 
 
