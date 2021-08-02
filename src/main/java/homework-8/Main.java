@@ -3,7 +3,7 @@ import java.awt.*;
 
 public class Main {
     public static void main(String[] args) {
-        Phone phone = new homework.Iphone12("12345");
+        Phone phone = new homework9.Iphone12("12345");
 
         phone.setColor(Color.BLACK);
         phone.setMaterial("titanium");
