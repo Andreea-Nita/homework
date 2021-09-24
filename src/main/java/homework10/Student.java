@@ -3,45 +3,30 @@ package homework10;
 import java.time.LocalDate;
 import java.time.Period;
 
+
 public class Student implements  Comparable<Student> {
+
     private String firstName;
     private String lastName;
     private LocalDate dateOfBirth;
     private int id;
     private Gender gender;
 
-    public Student(String firstName, String lastName, LocalDate dateOfBirth, int id, Gender gender) {
+    public Student(String firstName, String lastName, LocalDate dateOfBirth, int id, Gender gender) throws Exception{
         try {
             setFirstName(firstName);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        try {
             setLastName(lastName);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        try {
             setDateOfBirth(dateOfBirth);
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-
-        this.id = id;
-
-        try {
             setGender(gender);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            throw  new Exception(e.getMessage());
         }
+        this.id = id;
 
     }
 
-    private void setFirstName(String firstName) throws Exception {
-        if (firstName==null){
+    private void setFirstName (String firstName) throws Exception {
+        if (firstName==null || firstName.equals(" ")){
             throw new Exception("Nu ati introdus prenumele");
         } else {
             this.firstName = firstName;
@@ -49,7 +34,7 @@ public class Student implements  Comparable<Student> {
     }
 
     private void setLastName(String lastName) throws Exception {
-        if (lastName==null){
+        if (lastName==null || lastName.equals(" ")){
             throw new Exception("Nu ati introdus numele");
         } else {
             this.lastName = lastName;

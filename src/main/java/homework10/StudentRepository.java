@@ -1,10 +1,7 @@
 package homework10;
 
-import com.sun.source.doctree.SeeTree;
-
-import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.TreeSet;
 
 public class StudentRepository {
@@ -27,13 +24,15 @@ public class StudentRepository {
         }
     }
 
-    public void studentsWithAge(int age ) throws IllegalArgumentException {
+    public List<Student> studentsWithAge(int age ) throws IllegalArgumentException {
         if (age>=0){
+            List<Student> studentWithAge=new ArrayList<>();
             for (Student s: students ){
                 if (s.getAge(s)==age){
-                    System.out.println(s.toString()+"\n");
+                    studentWithAge.add(s);
                 }
             }
+            return studentWithAge;
         } else {
             throw  new IllegalArgumentException("Doar numere pozitive");
         }
@@ -52,5 +51,10 @@ public class StudentRepository {
         return studentByBirthDate;
     }
 
-}
+    public TreeSet<Student> getStudents(){
+        TreeSet<Student> stud=new TreeSet<>();
+        stud.addAll(students);
+        return stud;
+    }
 
+}
