@@ -3,34 +3,40 @@ package homework9;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student extends Course {
-    private String name;
-    private String id;
-    public List<Student> students=new ArrayList<>();
+public class Student {
+    private int id;
+    private String firstName;
+    private String lastName;
+    List<Course> coursesListS;
 
-    public Student (String id, String name){
-        this.id=id;
-        this.name=name;
+    public Student(int id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        coursesListS = new ArrayList<Course>();
     }
 
+    public String getName() {
+        return firstName+" "+lastName;
+    }
 
-    public void listStudents() {
-        for (Student student : students) {
-            System.out.println(student);
-        }
+    public void addCourse(Course course){
+        coursesListS.add(course);
+    }
+
+    public List<Course> getCourses(){
+        List<Course> list=new ArrayList<>();
+        list.addAll(coursesListS);
+        return list;
     }
 
     @Override
-    public void goToClass() {
-        System.out.println("Este prezent");;
-    }
-
-    @Override
-    public void learn() {
-        super.learn();
-    }
-
-    public void addStudent(Student student) {
-        students.add(student);
+    public String toString() {
+        return "Student{" +
+                "id='" + id + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", coursesListS=" + coursesListS +
+                '}';
     }
 }

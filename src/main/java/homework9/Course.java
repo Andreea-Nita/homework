@@ -1,15 +1,12 @@
 package homework9;
 
-public abstract class Course {
+public class Course {
+    private String name;
 
-    public abstract void goToClass();
-
-    public void learn() {
-        System.out.println("Studentul invata");
-    }
-
-    public void teach() {
-        System.out.println("Profesorul preda ");
+    public Course(String name) {
+        this.name = name;
     }
 
 }
+
+
