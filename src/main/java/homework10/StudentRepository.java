@@ -1,10 +1,16 @@
 package homework10;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
 public class StudentRepository {
+
+    public static final Logger LOGGER= LogManager.getLogger(StudentRepository.class);
+
     private TreeSet<Student> students=new TreeSet<>();
 
     public void addStudent(Student student){
@@ -20,6 +26,7 @@ public class StudentRepository {
                 }
             }
         } else{
+            LOGGER.error("id should be greater than 0");
             throw new Exception("id invalid");
         }
     }
@@ -34,6 +41,7 @@ public class StudentRepository {
             }
             return studentWithAge;
         } else {
+            LOGGER.error("age should be greater than or equal to 0");
             throw  new IllegalArgumentException("Doar numere pozitive");
         }
     }

@@ -1,10 +1,14 @@
 package homework10;
 
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+
 import java.time.LocalDate;
 import java.time.Period;
 
 
 public class Student implements  Comparable<Student> {
+    public static final Logger LOGGER= LogManager.getLogger(Student.class);
 
     private String firstName;
     private String lastName;
@@ -19,6 +23,7 @@ public class Student implements  Comparable<Student> {
             setDateOfBirth(dateOfBirth);
             setGender(gender);
         } catch (Exception e) {
+            LOGGER.error("Student can't be created ("+e.getMessage()+")");
             throw  new Exception(e.getMessage());
         }
         this.id = id;
@@ -27,6 +32,7 @@ public class Student implements  Comparable<Student> {
 
     private void setFirstName (String firstName) throws Exception {
         if (firstName==null || firstName.equals(" ")){
+            LOGGER.error("First name can't be empty");
             throw new Exception("Nu ati introdus prenumele");
         } else {
             this.firstName = firstName;
@@ -35,6 +41,7 @@ public class Student implements  Comparable<Student> {
 
     private void setLastName(String lastName) throws Exception {
         if (lastName==null || lastName.equals(" ")){
+            LOGGER.error("Last name can't be empty");
             throw new Exception("Nu ati introdus numele");
         } else {
             this.lastName = lastName;
@@ -43,6 +50,7 @@ public class Student implements  Comparable<Student> {
 
     private void setDateOfBirth(LocalDate dateOfBirth) throws Exception {
         if (dateOfBirth==null || dateOfBirth.getYear()<1900 || dateOfBirth.getYear()>LocalDate.now().getYear()-18) {
+            LOGGER.error("Date of birth not between 1900 and current year - 18");
             throw new Exception("Data invalida");
         } else {
             this.dateOfBirth = dateOfBirth;
@@ -56,6 +64,7 @@ public class Student implements  Comparable<Student> {
     private void setGender(Gender gender) throws Exception {
         Gender g=Gender.lookup(gender);
         if (g==null){
+            LOGGER.error("Invalid gender");
             throw new Exception("Invalid gender");
         } else {
             this.gender = gender;
